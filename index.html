@@ -30,17 +30,17 @@
 
         header {
             text-align: center;
-            padding: 40px 20px;
+            padding: 35px 20px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border-radius: 12px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
+            font-size: 2rem;
+            margin-bottom: 8px;
         }
 
         header p {
@@ -49,28 +49,62 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
+        }
+
+        /* Abas de Navegação */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tab-btn {
+            background-color: #e2e8f0;
+            color: #4a5568;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(76, 81, 191, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         .intro-card {
             background: var(--card-bg);
-            padding: 25px;
+            padding: 22px;
             border-radius: 12px;
             border-left: 5px solid var(--accent);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .intro-card h2 {
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 25px;
+            gap: 20px;
         }
 
         @media(min-width: 768px) {
@@ -82,7 +116,7 @@
         .card {
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 25px;
+            padding: 22px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             transition: transform 0.2s;
             border: 1px solid #e2e8f0;
@@ -92,33 +126,33 @@
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
         }
 
         .card h3 {
             color: var(--primary);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.3rem;
+            gap: 8px;
+            font-size: 1.25rem;
         }
 
         .card p {
             font-size: 0.95rem;
             color: #4a5568;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .btn {
             background-color: var(--primary);
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 12px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: background 0.2s;
             text-align: center;
             width: 100%;
@@ -128,7 +162,7 @@
             background-color: #3c366b;
         }
 
-        /* Modal Styles */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -145,14 +179,13 @@
 
         .modal-content {
             background: var(--card-bg);
-            padding: 30px;
+            padding: 25px;
             border-radius: 16px;
             max-width: 600px;
             width: 100%;
             max-height: 85vh;
             overflow-y: auto;
             position: relative;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         .close-btn {
@@ -164,39 +197,45 @@
             color: #a0aec0;
         }
 
-        .close-btn:hover {
-            color: var(--text);
-        }
-
         .modal h2 {
             color: var(--primary);
             margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .step-section-title {
+            font-weight: bold;
+            color: #2d3748;
+            margin-top: 12px;
+            margin-bottom: 6px;
         }
 
         .step-list {
             list-style: none;
+            margin-bottom: 15px;
         }
 
         .step-list li {
             background: var(--primary-light);
-            margin-bottom: 10px;
-            padding: 12px 15px;
+            margin-bottom: 8px;
+            padding: 10px 12px;
             border-radius: 8px;
             border-left: 4px solid var(--primary);
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .discussion-box {
             background: #fffaf0;
             border: 1px solid #feebc8;
-            padding: 15px;
+            padding: 12px;
             border-radius: 8px;
-            margin-top: 20px;
+            margin-top: 15px;
+            font-size: 0.95rem;
         }
 
         .discussion-box h4 {
             color: #dd6b20;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
     </style>
 </head>
@@ -208,51 +247,95 @@
             <p>Escola em Programação Web para Meninas — GRACE ICMC USP</p>
         </header>
 
-        <div class="intro-card">
-            <h2>O que é um Algoritmo? 🤔</h2>
-            <p>Não precisa se assustar com o nome técnico! Um algoritmo é simplesmente uma <strong>receita ou um passo a passo</strong> ordenado e lógico que a gente segue para resolver um problema ou realizar uma tarefa do nosso dia a dia.</p>
+        <!-- Menu de Abas -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('tarefa2')">Tarefa 2: Rotinas do Dia a Dia</button>
+            <button class="tab-btn" onclick="switchTab('tarefa3')">Tarefa 3: Desafios de Cálculo</button>
         </div>
 
-        <div class="grid">
-            <div class="card">
-                <div>
-                    <h3>👋 1. Lavar as Mãos</h3>
-                    <p>Você sabia que o ato de lavar as mãos segue um algoritmo perfeito para garantir que os germes sumam de verdade? Vamos ver os passos detalhados!</p>
-                </div>
-                <button class="btn" onclick="openModal('hands')">Ver Algoritmo</button>
+        <!-- CONTEÚDO TAREFA 2 -->
+        <div id="tarefa2" class="tab-content active">
+            <div class="intro-card">
+                <h2>Lógica no Cotidiano 📋</h2>
+                <p>Aqui nós transformamos ações normais do nosso dia em sequências organizadas! Mudar a ordem de um passo pode gerar um erro na tarefa.</p>
             </div>
-
-            <div class="card">
-                <div>
-                    <h3>🦁 2. Origami de Leão</h3>
-                    <p>Dobrar um papel até ele virar um leão fofinho parece mágica, mas é pura lógica! Se errar a ordem de uma dobra, o bicho vira outra coisa.</p>
+            <div class="grid">
+                <div class="card">
+                    <div>
+                        <h3>🧼 1. Lavar as Mãos</h3>
+                        <p>O ato de lavar as mãos segue regras certas para afastar as bactérias. Veja a sequência!</p>
+                    </div>
+                    <button class="btn" onclick="openModal('hands')">Ver Passo a Passo</button>
                 </div>
-                <button class="btn" onclick="openModal('origami')">Ver Algoritmo</button>
+                <div class="card">
+                    <div>
+                        <h3>🦁 2. Origami de Leão</h3>
+                        <p>Dobrar papel exige atenção. Se errar um passo da dobra, o leãozinho não aparece.</p>
+                    </div>
+                    <button class="btn" onclick="openModal('origami')">Ver Passo a Passo</button>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>🥪 3. Fazer um Sanduíche</h3>
+                        <p>Como explicar a receita para um robô montar seu lanche sem derrubar nada ou comer plástico?</p>
+                    </div>
+                    <button class="btn" onclick="openModal('sandwich')">Ver Passo a Passo</button>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>👟 4. Amarrar o Cadarço</h3>
+                        <p>Uma atividade automática, mas cheia de etapas coordenadas para o laço não soltar.</p>
+                    </div>
+                    <button class="btn" onclick="openModal('shoelace')">Ver Passo a Passo</button>
+                </div>
             </div>
+        </div>
 
-            <div class="card">
-                <div>
-                    <h3>🥪 3. Fazer um Sanduíche</h3>
-                    <p>E se você tivesse que dar instruções exatas para alguém que nunca viu comida na vida montar o seu lanche favorito? Teste esse passo a passo!</p>
-                </div>
-                <button class="btn" onclick="openModal('sandwich')">Ver Algoritmo</button>
+        <!-- CONTEÚDO TAREFA 3 -->
+        <div id="tarefa3" class="tab-content">
+            <div class="intro-card">
+                <h2>Algoritmos de Cálculo Matemático 📐</h2>
+                <p>Todo programa precisa de <strong>Entrada</strong> (pedir o dado), <strong>Processamento</strong> (fazer a conta) e <strong>Saída</strong> (dar o resultado).</p>
             </div>
-
-            <div class="card">
-                <div>
-                    <h3>👟 4. Amarrar o Cadarço</h3>
-                    <p>Algo que você faz no automático sem nem pensar, mas que exige uma sequência cirúrgica de movimentos para não desamarrar no meio do caminho.</p>
+            <div class="grid">
+                <div class="card">
+                    <div>
+                        <h3>🌡️ Ex 1. Celsius para Kelvin</h3>
+                        <p>Como o computador transforma escalas de temperatura usando variáveis lógicas.</p>
+                    </div>
+                    <button class="btn" onclick="openModal('kelvin')">Ver Estrutura</button>
                 </div>
-                <button class="btn" onclick="openModal('shoelace')">Ver Algoritmo</button>
+                <div class="card">
+                    <div>
+                        <h3>📏 Ex 2. Polegadas para Milímetros</h3>
+                        <p>Multiplicando valores para converter comprimentos automaticamente no sistema.</p>
+                    </div>
+                    <button class="btn" onclick="openModal('inches')">Ver Estrutura</button>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>⚡ Ex 3. Cálculo de Potência</h3>
+                        <p>Como ler os valores de Força e Velocidade para descobrir a Potência final de um corpo.</p>
+                    </div>
+                    <button class="btn" onclick="openModal('power')">Ver Estrutura</button>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>📐 Ex 4. Área do Trapézio</h3>
+                        <p>Dividindo uma fórmula complexa em pequenos passos fáceis para o processador.</p>
+                    </div>
+                    <button class="btn" onclick="openModal('trapezoid')">Ver Estrutura</button>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- MODAL -->
     <div class="modal" id="algoModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <h2 id="modalTitle">Título</h2>
-            <ul class="step-list" id="modalSteps"></ul>
+            <div id="modalBody"></div>
             <div class="discussion-box" id="modalDiscussion"></div>
         </div>
     </div>
@@ -260,76 +343,140 @@
     <script>
         const data = {
             hands: {
-                title: "Algoritmo: Lavar as Mãos Bem Certinho 🧼",
+                title: "Algoritmo: Lavar as Mãos 🧼",
+                isMath: false,
                 steps: [
-                    "1. Abra a torneira e molhe as mãos.",
-                    "2. Aplique sabão suficiente para cobrir toda a superfície.",
-                    "3. Esfregue as palmas das mãos uma na outra.",
-                    "4. Ensaboe as costas de cada mão cruzando os dedos.",
-                    "5. Esfregue bem o espaço entre os dedos.",
-                    "6. Junte os dedos in concha e esfregue as costas deles na palma oposta.",
-                    "7. Envolva e esfregue os polegares em movimentos circulares.",
-                    "8. Esfregue as unhas e as pontas dos dedos na palma da outra mão.",
-                    "9. Enxágue as mãos com bastante água para tirar o sabão.",
-                    "10. Seque bem com uma toalha ou papel limpo.",
-                    "11. Use o papel para fechar a torneira (assim você não se suja de novo!)."
+                    "1. Molhar as mãos com água corrente.",
+                    "2. Aplicar sabão suficiente.",
+                    "3. Esfregar bem as palmas das mãos.",
+                    "4. Ensaboar as costas das mãos cruzando os dedos.",
+                    "5. Esfregar os espaços entre os dedos e os polegares.",
+                    "6. Esfregar as pontas das unhas na palma da mão.",
+                    "7. Enxaguar toda a espuma com água.",
+                    "8. Secar com uma toalha limpa e fechar a torneira usando o papel."
                 ],
-                discussion: "<strong>Espaço do Detetive (Bug Check):</strong> Se você pular o passo 11 e fechar a torneira direto com a mão limpa, você pega as bactérias de volta! Viu como a ordem importa?"
+                discussion: "Se fechar a torneira com a mão limpa diretamente, recolhe as bactérias da superfície outra vez!"
             },
             origami: {
-                title: "Algoritmo: O Leão de Origami 📐",
+                title: "Algoritmo: Origami de Leão 🦁",
+                isMath: false,
                 steps: [
-                    "1. Pegue um papel quadrado e dobre ao meio na diagonal para marcar e abra de novo.",
-                    "2. Dobre as duas pontas laterais em direção à linha do meio (vai parecer um balão/pipa).",
-                    "3. Dobre as pontinhas de cima para fora para criar o efeito das orelhas.",
-                    "4. Vire o papel ao contrário e dobre a ponta inferior um pouco para cima para fazer o queixo.",
-                    "5. Siga o restante das dobras sequenciais da folha para modelar a juba e o corpinho.",
-                    "6. Desenhe os olhos, o focinho e os bigodes do leão com uma canetinha."
+                    "1. Dobrar o papel quadrado ao meio na diagonal e reabrir.",
+                    "2. Dobrar as laterais para dentro seguindo a marca central.",
+                    "3. Dobrar as pontas superiores para fora formando as orelhas.",
+                    "4. Virar o papel e dobrar a ponta de baixo para fixar o queixo.",
+                    "5. Desenhar os olhos e o focinho com canetinha no final."
                 ],
-                discussion: "<strong>Espaço do Detetive (Bug Check):</strong> Se tentar desenhar o rosto (Passo 6) antes de fazer as dobras, o desenho vai ficar escondido dentro das dobras do papel!"
+                discussion: "Se desenhar o rosto antes de dobrar, o desenho sumirá no meio dos vincos do papel."
             },
             sandwich: {
-                title: "Algoritmo: O Sanduíche Perfeito 🥪",
+                title: "Algoritmo: Fazer um Sanduíche 🥪",
+                isMath: false,
                 steps: [
-                    "1. Pegue um prato limpo no armário e coloque sobre a mesa.",
-                    "2. Pegue duas fatias de pão de forma e coloque-as lado a lado no prato.",
-                    "3. Use uma faca sem ponta para pegar uma colher de maionese ou manteiga e espalhe no pão.",
-                    "4. Coloque uma fatia de queijo por cima de uma das fatias de pão.",
-                    "5. Coloque uma fatia de presunto ou rodela de tomate por cima do queijo.",
-                    "6. Pegue a outra fatia de pão e coloque por cima do recheio, fechando o sanduíche."
+                    "1. Colocar duas fatias de pão lado a lado num prato.",
+                    "2. Passar maionese ou manteiga usando uma faca redonda.",
+                    "3. Adicionar uma fatia de queijo sobre o pão.",
+                    "4. Colocar uma rodela de tomate ou presunto por cima.",
+                    "5. Fechar juntando as duas fatias de pão."
                 ],
-                discussion: "<strong>Espaço do Detetive (Bug Check):</strong> Se o seu algoritmo disser 'coloque o recheio' sem mandar 'tirar a casca do queijo' ou 'abrir o saco de pão antes', o robô vai tentar comer o plástico!"
+                discussion: "Para um robô executar, as instruções devem incluir etapas como 'retirar a embalagem do queijo' para evitar falhas."
             },
             shoelace: {
-                title: "Algoritmo: Amarrar o Cadarço sem Nó Cego 👟",
+                title: "Algoritmo: Amarrar o Cadarço 👟",
+                isMath: false,
                 steps: [
-                    "1. Puxe os dois lados do cadarço para ajustar o tênis no pé.",
-                    "2. Cruze os dois cadarços fazendo um 'X'.",
-                    "3. Passe uma das pontas por baixo do 'X' e puxe bem firme para fazer o primeiro nó.",
-                    "4. Faça uma 'orelhinha de coelho' (um laço) com uma das pontas do cadarço.",
-                    "5. Pegue a outra ponta livre, dê uma volta completa ao redor da orelhinha.",
-                    "6. Empurre essa ponta por dentro do buraquinho que se formou embaixo da orelhinha.",
-                    "7. Puxe as duas orelhas para os lados opostos bem forte até prender."
+                    "1. Cruzar as duas pontas do cadarço fazendo um X.",
+                    "2. Passar uma ponta por baixo e puxar firme para criar a base.",
+                    "3. Moldar uma argola (orelhinha) com um dos lados.",
+                    "4. Dar a volta com a outra ponta livre ao redor da argola.",
+                    "5. Passar por dentro do espaço inferior e puxar os dois lados juntos."
                 ],
-                discussion: "<strong>Espaço do Detetive (Bug Check):</strong> Se você esquecer de puxar forte no final ou errar a volta, o laço desfaz na primeira caminhada!"
+                discussion: "Se esquecer de dar o aperto firme no final, o laço desfaz-se no primeiro movimento."
+            },
+            // TAREFA 3 (Mapeada Corretamente)
+            kelvin: {
+                title: "Exercício 1: Celsius para Kelvin 🌡️",
+                isMath: true,
+                entrada: "C: É a caixinha que vai guardar a temperatura em graus Celsius que a pessoa digitar.",
+                processo: [
+                    "1. Pegar o valor da temperatura em Celsius e salvar na variável C.",
+                    "2. Fazer a conta C + 273 e salvar o resultado em uma nova caixinha chamada K."
+                ],
+                saida: "Mostrar na tela o valor que ficou guardado na variável K."
+            },
+            inches: {
+                title: "Exercício 2: Polegadas para Milímetros 📏",
+                isMath: true,
+                entrada: "polegadas: A caixinha para guardar o tamanho em polegadas que o usuário quer converter.",
+                processo: [
+                    "1. Pegar o comprimento em polegadas e guardar na variável polegadas.",
+                    "2. Multiplicar o valor de polegadas por 25,4 e salvar o resultado na variável milimetros."
+                ],
+                saida: "Mostrar na tela o valor final que está na variável milimetros."
+            },
+            power: {
+                title: "Exercício 3: Cálculo de Potência ⚡",
+                isMath: true,
+                entrada: "F (caixinha para a força) e V (caixinha para a velocidade).",
+                processo: [
+                    "1. Pegar o valor da força e salvar na variável F.",
+                    "2. Pegar o valor da velocidade e salvar na variável V.",
+                    "3. Multiplicar o valor de F pelo de V e guardar tudo na variável de potência P."
+                ],
+                saida: "Mostrar na tela o resultado da potência que ficou na variável P."
+            },
+            trapezoid: {
+                title: "Exercício 4: Área do Trapézio 📐",
+                isMath: true,
+                entrada: "B_maior (base maior), B_menor (base menor) e altura.",
+                processo: [
+                    "1. Pegar os valores da base maior, base menor e altura e salvar nas suas variáveis.",
+                    "2. Somar B_maior + B_menor e guardar na variável soma_bases.",
+                    "3. Multiplicar o resultado de soma_bases pela altura e guardar na variável mult_altura.",
+                    "4. Dividir o valor de mult_altura por 2 e salvar o resultado final na variável area."
+                ],
+                saida: "Mostrar na tela o valor da área total que ficou guardado na variável area."
             }
         };
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
 
         function openModal(key) {
             const modal = document.getElementById('algoModal');
             const item = data[key];
             
             document.getElementById('modalTitle').innerText = item.title;
-            
-            const stepsUl = document.getElementById('modalSteps');
-            stepsUl.innerHTML = '';
-            item.steps.forEach(step => {
-                const li = document.createElement('li');
-                li.innerText = step;
-                stepsUl.appendChild(li);
-            });
-            
-            document.getElementById('modalDiscussion').innerHTML = `<h4>💡 Análise de Bugs:</h4><p>${item.discussion}</p>`;
+            const body = document.getElementById('modalBody');
+            body.innerHTML = '';
+
+            if (item.isMath) {
+                body.innerHTML += `<div class="step-section-title">📥 Dados de Entrada:</div>`;
+                body.innerHTML += `<ul class="step-list"><li>${item.entrada}</li></ul>`;
+                
+                body.innerHTML += `<div class="step-section-title">⚙️ O Processamento:</div>`;
+                let procList = '<ol class="step-list">';
+                item.processo.forEach(p => procList += `<li>${p}</li>`);
+                procList += '</ol>';
+                body.innerHTML += procList;
+
+                body.innerHTML += `<div class="step-section-title">📤 Dados de Saída:</div>`;
+                body.innerHTML += `<ul class="step-list"><li>${item.saida}</li></ul>`;
+                document.getElementById('modalDiscussion').style.display = 'none';
+            } else {
+                let list = '<ul class="step-list">';
+                item.steps.forEach(s => list += `<li>${s}</li>`);
+                list += '</ul>';
+                body.innerHTML = list;
+                
+                document.getElementById('modalDiscussion').style.display = 'block';
+                document.getElementById('modalDiscussion').innerHTML = `<h4>💡 Análise Lógica:</h4><p>${item.discussion}</p>`;
+            }
             
             modal.style.display = 'flex';
         }
