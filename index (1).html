@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descomplicando Algoritmos — GRACE</title>
+    <style>
+        :root {
+            --primary: #4c51bf;
+            --primary-light: #ebf8ff;
+            --accent: #ed64a6;
+            --bg: #f7fafc;
+            --text: #2d3748;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .intro-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid var(--accent);
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .intro-card h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        @media(min-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #4a5568;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background 0.2s;
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #3c366b;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 15px;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #a0aec0;
+        }
+
+        .close-btn:hover {
+            color: var(--text);
+        }
+
+        .modal h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .step-list {
+            list-style: none;
+        }
+
+        .step-list li {
+            background: var(--primary-light);
+            margin-bottom: 10px;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            font-size: 1rem;
+        }
+
+        .discussion-box {
+            background: #fffaf0;
+            border: 1px solid #feebc8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .discussion-box h4 {
+            color: #dd6b20;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Descomplicando os Algoritmos! 🚀</h1>
+            <p>Escola em Programação Web para Meninas — GRACE ICMC USP</p>
+        </header>
+
+        <div class="intro-card">
+            <h2>O que é um Algoritmo? 🤔</h2>
+            <p>Não precisa se assustar com o nome técnico! Um algoritmo é simplesmente uma <strong>receita ou um passo a passo</strong> ordenado e lógico que a gente segue para resolver um problema ou realizar uma tarefa do nosso dia a dia.</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <h3>👋 1. Lavar as Mãos</h3>
+                    <p>Você sabia que o ato de lavar as mãos segue um algoritmo perfeito para garantir que os germes sumam de verdade? Vamos ver os passos detalhados!</p>
+                </div>
+                <button class="btn" onclick="openModal('hands')">Ver Algoritmo</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>🦁 2. Origami de Leão</h3>
+                    <p>Dobrar um papel até ele virar um leão fofinho parece mágica, mas é pura lógica! Se errar a ordem de uma dobra, o bicho vira outra coisa.</p>
+                </div>
+                <button class="btn" onclick="openModal('origami')">Ver Algoritmo</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>🥪 3. Fazer um Sanduíche</h3>
+                    <p>E se você tivesse que dar instruções exatas para alguém que nunca viu comida na vida montar o seu lanche favorito? Teste esse passo a passo!</p>
+                </div>
+                <button class="btn" onclick="openModal('sandwich')">Ver Algoritmo</button>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>👟 4. Amarrar o Cadarço</h3>
+                    <p>Algo que você faz no automático sem nem pensar, mas que exige uma sequência cirúrgica de movimentos para não desamarrar no meio do caminho.</p>
+                </div>
+                <button class="btn" onclick="openModal('shoelace')">Ver Algoritmo</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="algoModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Título</h2>
+            <ul class="step-list" id="modalSteps"></ul>
+            <div class="discussion-box" id="modalDiscussion"></div>
+        </div>
+    </div>
+
+    <script>
+        const data = {
+            hands: {
+                title: "Algoritmo: Lavar as Mãos Bem Certinho 🧼",
+                steps: [
+                    "1. Abra a torneira e molhe as mãos.",
+                    "2. Aplique sabão suficiente para cobrir toda a superfície.",
+                    "3. Esfregue as palmas das mãos uma na outra.",
+                    "4. Ensaboe as costas de cada mão cruzando os dedos.",
+                    "5. Esfregue bem o espaço entre os dedos.",
+                    "6. Junte os dedos in concha e esfregue as costas deles na palma oposta.",
+                    "7. Envolva e esfregue os polegares em movimentos circulares.",
+                    "8. Esfregue as unhas e as pontas dos dedos na palma da outra mão.",
+                    "9. Enxágue as mãos com bastante água para tirar o sabão.",
+                    "10. Seque bem com uma toalha ou papel limpo.",
+                    "11. Use o papel para fechar a torneira (assim você não se suja de novo!)."
+                ],
+                discussion: "<strong>Espaço do Detetive (Bug Check):</strong> Se você pular o passo 11 e fechar a torneira direto com a mão limpa, você pega as bactérias de volta! Viu como a ordem importa?"
+            },
+            origami: {
+                title: "Algoritmo: O Leão de Origami 📐",
+                steps: [
+                    "1. Pegue um papel quadrado e dobre ao meio na diagonal para marcar e abra de novo.",
+                    "2. Dobre as duas pontas laterais em direção à linha do meio (vai parecer um balão/pipa).",
+                    "3. Dobre as pontinhas de cima para fora para criar o efeito das orelhas.",
+                    "4. Vire o papel ao contrário e dobre a ponta inferior um pouco para cima para fazer o queixo.",
+                    "5. Siga o restante das dobras sequenciais da folha para modelar a juba e o corpinho.",
+                    "6. Desenhe os olhos, o focinho e os bigodes do leão com uma canetinha."
+                ],
+                discussion: "<strong>Espaço do Detetive (Bug Check):</strong> Se tentar desenhar o rosto (Passo 6) antes de fazer as dobras, o desenho vai ficar escondido dentro das dobras do papel!"
+            },
+            sandwich: {
+                title: "Algoritmo: O Sanduíche Perfeito 🥪",
+                steps: [
+                    "1. Pegue um prato limpo no armário e coloque sobre a mesa.",
+                    "2. Pegue duas fatias de pão de forma e coloque-as lado a lado no prato.",
+                    "3. Use uma faca sem ponta para pegar uma colher de maionese ou manteiga e espalhe no pão.",
+                    "4. Coloque uma fatia de queijo por cima de uma das fatias de pão.",
+                    "5. Coloque uma fatia de presunto ou rodela de tomate por cima do queijo.",
+                    "6. Pegue a outra fatia de pão e coloque por cima do recheio, fechando o sanduíche."
+                ],
+                discussion: "<strong>Espaço do Detetive (Bug Check):</strong> Se o seu algoritmo disser 'coloque o recheio' sem mandar 'tirar a casca do queijo' ou 'abrir o saco de pão antes', o robô vai tentar comer o plástico!"
+            },
+            shoelace: {
+                title: "Algoritmo: Amarrar o Cadarço sem Nó Cego 👟",
+                steps: [
+                    "1. Puxe os dois lados do cadarço para ajustar o tênis no pé.",
+                    "2. Cruze os dois cadarços fazendo um 'X'.",
+                    "3. Passe uma das pontas por baixo do 'X' e puxe bem firme para fazer o primeiro nó.",
+                    "4. Faça uma 'orelhinha de coelho' (um laço) com uma das pontas do cadarço.",
+                    "5. Pegue a outra ponta livre, dê uma volta completa ao redor da orelhinha.",
+                    "6. Empurre essa ponta por dentro do buraquinho que se formou embaixo da orelhinha.",
+                    "7. Puxe as duas orelhas para os lados opostos bem forte até prender."
+                ],
+                discussion: "<strong>Espaço do Detetive (Bug Check):</strong> Se você esquecer de puxar forte no final ou errar a volta, o laço desfaz na primeira caminhada!"
+            }
+        };
+
+        function openModal(key) {
+            const modal = document.getElementById('algoModal');
+            const item = data[key];
+            
+            document.getElementById('modalTitle').innerText = item.title;
+            
+            const stepsUl = document.getElementById('modalSteps');
+            stepsUl.innerHTML = '';
+            item.steps.forEach(step => {
+                const li = document.createElement('li');
+                li.innerText = step;
+                stepsUl.appendChild(li);
+            });
+            
+            document.getElementById('modalDiscussion').innerHTML = `<h4>💡 Análise de Bugs:</h4><p>${item.discussion}</p>`;
+            
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('algoModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('algoModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
